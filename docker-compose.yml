@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # Serviço para o contêiner PHP
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "84:84"
+    volumes:
+      - ./seu-aplicativo-php:/var/www/html
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=senha-do-mysql
+      - MYSQL_DATABASE=nome-do-banco-de-dados
+
+
